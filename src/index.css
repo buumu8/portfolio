@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@app-wrapper {
+  bg-lightBg dark: bg-darkBg text-gray-800 dark:text-gray-100 transition-colors duration-300 font-sans;
+}
+
+@body {
+  bg-lightBg dark: bg-darkBg text-gray-800 dark:text-gray-100 transition-colors duration-300 font-sans;
+}
+
+@a {
+  text-primary hover: text-accent transition-colors;
+}
+
+@h1,
+@h2,
+@h3 {
+  font-semibold text-gray-900 dark: text-white;
+}

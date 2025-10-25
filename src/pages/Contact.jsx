@@ -8,7 +8,7 @@ export default function Contact() {
                     href="mailto:your@email.com"
                     className="text-blue-500 underline"
                 >
-                    your@email.com
+                    jettapoltuetrakul@gmail.com
                 </a>
             </p>
         </section>
