@@ -6,7 +6,7 @@ import fm from "front-matter";
 
 function BlogPage() {
     const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(true); // ✅ Loading state
+    const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(5);
     const [selectedTag, setSelectedTag] = useState("All");
@@ -27,45 +27,40 @@ function BlogPage() {
     }
 
     useEffect(() => {
-        setLoading(true); // show loader at start
-        const blogFiles = import.meta.glob("../blogs/*.md", { as: "raw" });
+        setLoading(true);
 
-        const postsArray = Object.keys(blogFiles).map((path) => ({
-            path,
-            importFn: blogFiles[path],
-        }));
+        // Preload all markdown files
+        const blogFiles = import.meta.glob("../blogs/*.md", { as: "raw", eager: true });
 
-        Promise.all(
-            postsArray.map(async (post) => {
-                const rawContent = await post.importFn();
-                const { attributes, body } = fm(rawContent);
-                const slug = post.path.split("/").pop().replace(".md", "");
-                const imagePath = attributes.image
-                    ? `/portfolio/images/${attributes.image.replace(/^.*[\\/]/, "")}`
-                    : fallbackImages[hashString(slug) % fallbackImages.length];
+        const loadedPosts = Object.entries(blogFiles).map(([path, rawContent]) => {
+            const { attributes, body } = fm(rawContent);
+            const slug = path.split("/").pop().replace(".md", "");
+            const imagePath = attributes.image
+                ? `/portfolio/images/${attributes.image.replace(/^.*[\\/]/, "")}`
+                : fallbackImages[hashString(slug) % fallbackImages.length];
 
-                return {
-                    slug,
-                    metadata: { ...attributes, image: imagePath },
-                    preview: body.split("\n").slice(0, 3).join(" "),
-                    fullContent: body,
-                };
-            })
-        ).then((loadedPosts) => {
-            loadedPosts.sort((a, b) =>
-                a.metadata.date && b.metadata.date
-                    ? new Date(b.metadata.date) - new Date(a.metadata.date)
-                    : 0
-            );
-            setPosts(loadedPosts);
-
-            const tagsSet = new Set();
-            loadedPosts.forEach((p) => {
-                if (p.metadata.tags) p.metadata.tags.forEach((tag) => tagsSet.add(tag));
-            });
-            setAllTags(["All", ...Array.from(tagsSet)]);
-            setLoading(false); // hide loader after posts are loaded
+            return {
+                slug,
+                metadata: { ...attributes, image: imagePath },
+                preview: body.split("\n").slice(0, 3).join(" "),
+                fullContent: body,
+            };
         });
+
+        loadedPosts.sort((a, b) =>
+            a.metadata.date && b.metadata.date
+                ? new Date(b.metadata.date) - new Date(a.metadata.date)
+                : 0
+        );
+
+        const tagsSet = new Set();
+        loadedPosts.forEach((p) => {
+            if (p.metadata.tags) p.metadata.tags.forEach((tag) => tagsSet.add(tag));
+        });
+
+        setAllTags(["All", ...Array.from(tagsSet)]);
+        setPosts(loadedPosts);
+        setLoading(false);
     }, []);
 
     const filteredPosts =
@@ -91,9 +86,7 @@ function BlogPage() {
                             setSelectedTag(tag);
                             setCurrentPage(1);
                         }}
-                        className={`px-3 py-1 rounded ${selectedTag === tag
-                            ? "bg-blue-600 text-white"
-                            : "bg-gray-200  text-gray-800 "
+                        className={`px-3 py-1 rounded ${selectedTag === tag ? "bg-blue-600 text-white" : "bg-gray-200  text-gray-800"
                             }`}
                     >
                         {tag}
@@ -130,10 +123,7 @@ function BlogPage() {
                                     {post.metadata.tags && (
                                         <div className="flex flex-wrap gap-2 mt-1">
                                             {post.metadata.tags.map((t) => (
-                                                <span
-                                                    key={t}
-                                                    className="text-xs bg-gray-300  px-2 py-0.5 rounded"
-                                                >
+                                                <span key={t} className="text-xs bg-gray-300  px-2 py-0.5 rounded">
                                                     {t}
                                                 </span>
                                             ))}
