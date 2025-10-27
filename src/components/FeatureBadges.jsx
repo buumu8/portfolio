@@ -17,7 +17,7 @@ export default function FeaturedBadges({ badges }) {
 
     return (
         <section className="w-full px-4 py-16">
-            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">
+            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center scrollbar-hide">
                 Featured Badges
             </h2>
 
@@ -49,13 +49,13 @@ export default function FeaturedBadges({ badges }) {
                             href={badge.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-grow min-w-[150px] max-w-[220px] relative p-4 border rounded-lg bg-white dark:bg-gray-800 shadow-md 
+                            className="grow min-w-[150px] max-w-[220px] relative p-4 border rounded-lg bg-white dark:bg-gray-800 shadow-md 
                          hover:shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300"
                         >
                             {/* Ribbon */}
-                            <span className="absolute top-2 right-2 bg-yellow-400 text-xs font-bold text-gray-900 px-2 py-0.5 rounded">
+                            {/* <span className="absolute top-2 right-2 bg-yellow-400 text-xs font-bold text-gray-900 px-2 py-0.5 rounded">
                                 Featured
-                            </span>
+                            </span> */}
 
                             {/* Badge Image */}
                             <div className="w-full h-24 mb-2 flex items-center justify-center">

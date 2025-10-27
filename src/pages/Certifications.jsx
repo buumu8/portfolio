@@ -17,13 +17,10 @@ export default function Certifications() {
     // ✅ Filter badges by category
     const filteredBadges =
         selectedCategory === "All"
-            ? badges
-            : badges.filter((b) => b.categories.includes(selectedCategory));
-
-    // ✅ Sort so priority badges appear first
-    const sortedBadges = [...filteredBadges].sort(
-        (a, b) => (b.priority ? 1 : 0) - (a.priority ? 1 : 0)
-    );
+            ? [...badges].sort((a, b) => Number(b.priority) - Number(a.priority))
+            : badges
+                .filter((b) => b.categories.includes(selectedCategory))
+                .sort((a, b) => Number(b.priority) - Number(a.priority));
 
     return (
         <section className="max-w-6xl mx-auto px-4 py-16">
@@ -38,8 +35,8 @@ export default function Certifications() {
                         key={cat}
                         onClick={() => setSelectedCategory(cat)}
                         className={`px-4 py-2 rounded-full font-medium transition-colors duration-200 ${selectedCategory === cat
-                                ? "bg-blue-600 text-white shadow-md"
-                                : "bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+                            ? "bg-blue-600 text-white shadow-md"
+                            : "bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
                             }`}
                     >
                         {cat}
@@ -49,32 +46,39 @@ export default function Certifications() {
 
             {/* Badges Grid */}
             <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                {sortedBadges.map((badge, i) => (
+                {filteredBadges.map((badge, i) => (
                     <a
                         key={i}
                         href={badge.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`relative flex flex-col items-center p-4 border rounded-lg transition transform hover:shadow-lg ${badge.priority
-                                ? "scale-105 border-blue-500"
-                                : "border-gray-200 dark:border-gray-700"
-                            }`}
+                        className="flex flex-col justify-between h-56 p-4 border rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 relative"
                     >
-                        {/* Ribbon for priority badges */}
+                        {/* Priority Ribbon */}
                         {badge.priority && (
                             <span className="absolute top-2 right-2 bg-yellow-400 text-xs font-bold text-gray-900 px-2 py-0.5 rounded">
                                 Featured
                             </span>
                         )}
 
-                        <img
-                            src={badge.image}
-                            alt={badge.name}
-                            className="w-24 h-24 object-contain mb-2"
-                        />
-                        <span className="text-center text-sm font-medium text-gray-700 dark:text-gray-300">
-                            {badge.name}
-                        </span>
+                        {/* Top Content: Badge Image + Name */}
+                        <div className="flex flex-col items-center">
+                            <div className="w-full h-24 mb-2 flex items-center justify-center">
+                                <img
+                                    src={badge.image}
+                                    alt={badge.name}
+                                    className="object-contain w-full h-full"
+                                />
+                            </div>
+                            <h3 className="text-center text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                {badge.name}
+                            </h3>
+                        </div>
+
+                        {/* Issuer at Bottom */}
+                        <p className="text-center text-xs text-gray-500 dark:text-gray-400 mt-2">
+                            Issued by {badge.issuer}
+                        </p>
                     </a>
                 ))}
             </div>

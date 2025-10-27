@@ -6,26 +6,7 @@ import Resume from "./pages/Resume";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import './index.css'
-
-import ThemeToggle from "./components/ThemeToggle";
-
-function Navbar() {
-  return (
-    <nav className="flex justify-between items-center p-4 shadow-md bg-lightBg dark:bg-darkBg text-gray-800 dark:text-gray-100">
-      <Link to="/" className="text-xl font-semibold">Portfolio</Link>
-      <div className="flex items-center space-x-4">
-        <Link to="/">About me</Link>
-        <Link to="/projects">Projects</Link>
-        <Link to="/certifications">Certifications</Link>
-        <Link to="/resume">Resume</Link>
-        <Link to="/blog">Blog</Link>
-        <Link to="/contact">Contact</Link>
-        <ThemeToggle />
-      </div>
-    </nav>
-  );
-}
-
+import Navbar from "./components/NavBar";
 
 function Footer() {
   return (
@@ -40,7 +21,7 @@ function App() {
     <Router basename="/portfolio">
       <div className="flex flex-col min-h-screen app-wrapper">
         <Navbar />
-        <main className="flex-grow container mx-auto px-4 py-8">
+        <main className="grow container mx-auto px-4 py-8">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
