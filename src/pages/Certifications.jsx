@@ -23,7 +23,7 @@ export default function Certifications() {
                 .sort((a, b) => Number(b.priority) - Number(a.priority));
 
     return (
-        <section className="max-w-6xl mx-auto px-4 py-16">
+        <section className="max-w-6xl mx-auto px-4 py-16 mt-5">
             <h1 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
                 Certifications & Badges
             </h1>

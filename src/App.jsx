@@ -1,12 +1,13 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Projects from "./pages/Projects";
+import Projects from "./pages/ProjectsPage";
 import Certifications from "./pages/Certifications";
 import Resume from "./pages/Resume";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
-import './index.css'
 import Navbar from "./components/NavBar";
+import PostDetail from "./pages/PostDetail";
+import "./index.css";
 
 function Footer() {
   return (
@@ -18,7 +19,7 @@ function Footer() {
 
 function App() {
   return (
-    <Router basename="/portfolio">
+    <Router>
       <div className="flex flex-col min-h-screen app-wrapper">
         <Navbar />
         <main className="grow container mx-auto px-4 py-8">
@@ -28,6 +29,7 @@ function App() {
             <Route path="/certifications" element={<Certifications />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<PostDetail />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

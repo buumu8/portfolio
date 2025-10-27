@@ -6,7 +6,7 @@ export default function Home() {
     const priorityBadges = badges.filter((b) => b.priority);
 
     return (
-        <section className="flex flex-col items-center text-center py-20 px-4">
+        <section className="flex flex-col items-center text-center py-20 px-4 mt-5">
             {/* --- Hero Section --- */}
             <h1 className="text-5xl font-bold mb-4">
                 Hi, I’m <span className="text-primary">Jettapol Tuetrakul</span>

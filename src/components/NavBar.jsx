@@ -5,8 +5,7 @@ function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className="bg-gray-900 text-gray-100 shadow-md p-4">
-            {/* Top row: logo + hamburger (desktop: menu aligned horizontally) */}
+        <nav className="fixed top-0 left-0 w-full z-50 bg-gray-900 text-gray-100 shadow-md p-4 md:mb-0 mb-20">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
                 {/* Logo */}
                 <Link to="/" className="text-xl font-light mb-2 md:mb-0">
@@ -56,51 +55,17 @@ function Navbar() {
                     className={`flex flex-col md:flex-row md:items-center w-full md:w-auto overflow-hidden transition-all duration-300 ${isOpen ? "max-h-64" : "max-h-0 md:max-h-full"
                         }`}
                 >
-                    <Link
-                        to="/"
-                        className="py-2 md:py-0 md:mx-2 hover:text-gray-300"
-                        onClick={() => setIsOpen(false)}
-                    >
-                        About me
-                    </Link>
-                    <Link
-                        to="/projects"
-                        className="py-2 md:py-0 md:mx-2 hover:text-gray-300"
-                        onClick={() => setIsOpen(false)}
-                    >
-                        Projects
-                    </Link>
-                    <Link
-                        to="/certifications"
-                        className="py-2 md:py-0 md:mx-2 hover:text-gray-300"
-                        onClick={() => setIsOpen(false)}
-                    >
-                        Certifications
-                    </Link>
-                    <Link
-                        to="/resume"
-                        className="py-2 md:py-0 md:mx-2 hover:text-gray-300"
-                        onClick={() => setIsOpen(false)}
-                    >
-                        Resume
-                    </Link>
-                    <Link
-                        to="/blog"
-                        className="py-2 md:py-0 md:mx-2 hover:text-gray-300"
-                        onClick={() => setIsOpen(false)}
-                    >
-                        Blog
-                    </Link>
-                    <Link
-                        to="/contact"
-                        className="py-2 md:py-0 md:mx-2 hover:text-gray-300"
-                        onClick={() => setIsOpen(false)}
-                    >
-                        Contact
-                    </Link>
+                    <Link to="/" className="py-2 md:py-0 md:mx-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>About me</Link>
+                    <Link to="/projects" className="py-2 md:py-0 md:mx-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>Projects</Link>
+                    <Link to="/certifications" className="py-2 md:py-0 md:mx-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>Certifications</Link>
+                    <Link to="/resume" className="py-2 md:py-0 md:mx-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>Resume</Link>
+                    <Link to="/blog" className="py-2 md:py-0 md:mx-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>Blog</Link>
+                    <Link to="/contact" className="py-2 md:py-0 md:mx-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>Contact</Link>
                 </div>
             </div>
         </nav>
+
+
     );
 }
 
