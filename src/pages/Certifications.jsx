@@ -41,7 +41,7 @@ export default function Certifications() {
                             : "bg-gray-100 text-gray-800 hover:bg-gray-200"
                             }`}
                     >
-                        {cat}
+                        {cat == 'All' ? 'All' : `#${cat}`}
                     </button>
                 ))}
             </div>
