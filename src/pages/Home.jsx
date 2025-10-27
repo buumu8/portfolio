@@ -12,7 +12,7 @@ export default function Home() {
                 Hi, I’m <span className="text-primary">Jettapol Tuetrakul</span>
             </h1>
 
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-xl mb-8">
+            <p className="text-lg text-gray-600  max-w-xl mb-8">
                 Cybersecurity. Machine Learning. Web Developing. Real-world defense.
             </p>
             <div className="flex space-x-4">
@@ -26,7 +26,7 @@ export default function Home() {
                 </a>
                 <a
                     href={`${import.meta.env.BASE_URL}/projects`}
-                    className="px-5 py-2 border border-primary text-primary rounded-md hover:bg-blue-50 dark:hover:bg-slate-800 transition"
+                    className="px-5 py-2 border border-primary text-primary rounded-md hover:bg-blue-50 transition"
                 >
                     View Projects
                 </a>
@@ -34,10 +34,10 @@ export default function Home() {
 
             {/* --- About Me Preview --- */}
             <div className="mt-20 max-w-2xl text-left">
-                <h2 className="text-2xl font-semibold mb-2 text-gray-900 dark:text-gray-100">
+                <h2 className="text-2xl font-semibold mb-2 text-gray-900 ">
                     About Me
                 </h2>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-gray-600 ">
                     I’m a multilingual Cybersecurity M.S. student at New York University with hands-on experience in SOC operations, network security, and OT/IT threat detection.
                     My work bridges security engineering, mobile security, and incident response — backed by a passion for building safer systems through both human insight and technical precision.
                     With a foundation in machine learning and full-stack web development, I aim to secure the next generation of intelligent and connected technologies.

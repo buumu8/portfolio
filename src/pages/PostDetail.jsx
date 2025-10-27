@@ -59,7 +59,7 @@ function PostDetail() {
                     {post.metadata.tags.map((t) => (
                         <span
                             key={t}
-                            className="text-xs bg-gray-300 dark:bg-gray-600 px-2 py-0.5 rounded"
+                            className="text-xs bg-gray-300  px-2 py-0.5 rounded"
                         >
                             {t}
                         </span>
@@ -76,7 +76,7 @@ function PostDetail() {
                 </div>
             )}
 
-            <div className="prose dark:prose-invert mt-4">
+            <div className="prose ">
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                     {post.content}
                 </ReactMarkdown>

@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Navbar from "./components/NavBar";
 import PostDetail from "./pages/PostDetail";
 import "./index.css";
+import PageWrapper from "./components/PageWrapper";
 
 function Footer() {
   return (
@@ -24,13 +25,13 @@ function App() {
         <Navbar />
         <main className="grow container mx-auto px-4 py-8">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/certifications" element={<Certifications />} />
-            <Route path="/resume" element={<Resume />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<PostDetail />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+            <Route path="/projects" element={<PageWrapper><Projects /></PageWrapper>} />
+            <Route path="/certifications" element={<PageWrapper><Certifications /></PageWrapper>} />
+            <Route path="/resume" element={<PageWrapper><Resume /></PageWrapper>} />
+            <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
+            <Route path="/blog/:slug" element={<PageWrapper><PostDetail /></PageWrapper>} />
+            <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
           </Routes>
         </main>
         <Footer />
