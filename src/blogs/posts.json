@@ -1,0 +1,16 @@
+[
+    {
+        "slug": "first-post",
+        "title": "My First Post",
+        "date": "2025-10-28",
+        "description": "An introduction to my blog.",
+        "image": "/images/first-post.jpg"
+    },
+    {
+        "slug": "second-post",
+        "title": "Another Post",
+        "date": "2025-10-29",
+        "description": "Another interesting article.",
+        "image": "/images/second-post.jpg"
+    }
+]

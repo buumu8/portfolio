@@ -2,6 +2,7 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import Navbar from "./components/NavBar";
 import PageWrapper from "./components/PageWrapper";
+import NotFoundPage from "./pages/NotFoundPage";
 import "./index.css";
 
 // Simple Loader component
@@ -15,8 +16,8 @@ const Loader = () => (
 const Home = lazy(() => import("./pages/Home"));
 const Projects = lazy(() => import("./pages/ProjectsPage"));
 const Certifications = lazy(() => import("./pages/Certifications"));
-const Resume = lazy(() => import("./pages/Resume"));
-const Blog = lazy(() => import("./pages/Blog"));
+import ResumePage from "./pages/Resume";
+import Blog from "./pages/Blog";
 const PostDetail = lazy(() => import("./pages/PostDetail"));
 const Contact = lazy(() => import("./pages/Contact"));
 
@@ -39,10 +40,11 @@ function App() {
               <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
               <Route path="/projects" element={<PageWrapper><Projects /></PageWrapper>} />
               <Route path="/certifications" element={<PageWrapper><Certifications /></PageWrapper>} />
-              <Route path="/resume" element={<PageWrapper><Resume /></PageWrapper>} />
+              <Route path="/resume" element={<PageWrapper><ResumePage /></PageWrapper>} />
               <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
               <Route path="/blog/:slug" element={<PageWrapper><PostDetail /></PageWrapper>} />
               <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+              <Route path="*" element={<NotFoundPage />} /> {/* Catch-all */}
             </Routes>
           </Suspense>
         </main>

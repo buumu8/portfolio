@@ -1,191 +1,101 @@
-import { useState, useEffect } from "react";
+// src/pages/Blog.jsx
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import fm from "front-matter";
 
-function BlogPage() {
+export default function Blog() {
     const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(5);
-    const [selectedTag, setSelectedTag] = useState("All");
-    const [allTags, setAllTags] = useState([]);
-
-    const fallbackImages = Array.from(
-        { length: 10 },
-        (_, i) => `/portfolio/images/fallback_${i + 1}.jpg`
-    );
-
-    function hashString(str) {
-        let hash = 0;
-        for (let i = 0; i < str.length; i++) {
-            hash = (hash << 5) - hash + str.charCodeAt(i);
-            hash |= 0;
-        }
-        return Math.abs(hash);
-    }
 
     useEffect(() => {
-        setLoading(true);
+        const blogFiles = import.meta.glob("../blogs/*.md", { as: "raw" });
 
-        // Preload all markdown files
-        const blogFiles = import.meta.glob("../blogs/*.md", { as: "raw", eager: true });
-
-        const loadedPosts = Object.entries(blogFiles).map(([path, rawContent]) => {
-            const { attributes, body } = fm(rawContent);
-            const slug = path.split("/").pop().replace(".md", "");
-            const imagePath = attributes.image
-                ? `/portfolio/images/${attributes.image.replace(/^.*[\\/]/, "")}`
-                : fallbackImages[hashString(slug) % fallbackImages.length];
-
-            return {
-                slug,
-                metadata: { ...attributes, image: imagePath },
-                preview: body.split("\n").slice(0, 3).join(" "),
-                fullContent: body,
-            };
-        });
-
-        loadedPosts.sort((a, b) =>
-            a.metadata.date && b.metadata.date
-                ? new Date(b.metadata.date) - new Date(a.metadata.date)
-                : 0
+        const fallbackImages = Array.from(
+            { length: 10 },
+            (_, i) => `/portfolio/images/fallback_${i + 1}.jpg`
         );
 
-        const tagsSet = new Set();
-        loadedPosts.forEach((p) => {
-            if (p.metadata.tags) p.metadata.tags.forEach((tag) => tagsSet.add(tag));
-        });
+        const hashString = (str) => {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = (hash << 5) - hash + str.charCodeAt(i);
+                hash |= 0;
+            }
+            return Math.abs(hash);
+        };
 
-        setAllTags(["All", ...Array.from(tagsSet)]);
-        setPosts(loadedPosts);
-        setLoading(false);
+        const loadPosts = async () => {
+            const postEntries = await Promise.all(
+                Object.entries(blogFiles).map(async ([path, resolver]) => {
+                    const raw = await resolver();
+                    const { attributes, body } = fm(raw);
+
+                    const slug = path.split("/").pop().replace(".md", "");
+                    const image = attributes.image
+                        ? `/portfolio/images/${attributes.image.replace(/^.*[\\/]/, "")}`
+                        : fallbackImages[hashString(slug) % fallbackImages.length];
+
+                    return {
+                        slug,
+                        metadata: { ...attributes, image },
+                        content: body,
+                    };
+                })
+            );
+
+            // Optional: sort by date descending
+            postEntries.sort(
+                (a, b) => new Date(b.metadata.date) - new Date(a.metadata.date)
+            );
+
+            setPosts(postEntries);
+        };
+
+        loadPosts();
     }, []);
 
-    const filteredPosts =
-        selectedTag === "All"
-            ? posts
-            : posts.filter((post) => post.metadata.tags?.includes(selectedTag));
-
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
-    const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+    if (posts.length === 0) return <div className="p-6">Loading posts...</div>;
 
     return (
-        <section className="max-w-5xl mx-auto px-4 py-16 mt-5">
-            <h1 className="text-3xl font-bold mb-4">Blog</h1>
+        <section className="max-w-6xl mx-auto px-4 py-16 mt-5">
+            <h1 className="text-3xl font-bold mb-6">Blog</h1>
 
-            {/* Tags Filter */}
-            <div className="flex flex-wrap gap-2 mb-4">
-                {allTags.map((tag) => (
-                    <button
-                        key={tag}
-                        onClick={() => {
-                            setSelectedTag(tag);
-                            setCurrentPage(1);
-                        }}
-                        className={`px-3 py-1 rounded ${selectedTag === tag ? "bg-blue-600 text-white" : "bg-gray-200  text-gray-800"
-                            }`}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {posts.map((post) => (
+                    <Link
+                        key={post.slug}
+                        to={`/blog/${post.slug}`}
+                        className="border rounded-md shadow-md hover:shadow-lg transition bg-white flex flex-col overflow-hidden"
                     >
-                        {tag}
-                    </button>
-                ))}
-            </div>
-
-            {/* Blog list or loader */}
-            {loading ? (
-                <div className="flex justify-center items-center min-h-[300px]">
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500 border-opacity-60"></div>
-                </div>
-            ) : (
-                <div className="flex flex-col space-y-6">
-                    {currentPosts.map((post, idx) => (
-                        <Link
-                            to={`/blog/${post.slug}`}
-                            key={idx}
-                            className="flex flex-col md:flex-row border rounded-md hover:shadow-lg cursor-pointer bg-gray-50  overflow-hidden min-h-[200px]"
-                        >
-                            {post.metadata.image && (
-                                <div className="w-full md:w-48 aspect-square overflow-hidden flex-shrink-0">
-                                    <img
-                                        src={post.metadata.image}
-                                        alt={post.metadata.title}
-                                        className="w-full h-full object-cover"
-                                    />
+                        <div className="aspect-video w-full overflow-hidden">
+                            <img
+                                src={post.metadata.image}
+                                alt={post.metadata.title}
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div className="p-4 flex flex-col flex-grow">
+                            <h2 className="font-semibold text-lg mb-2">{post.metadata.title}</h2>
+                            <p className="text-sm text-gray-500 mb-2">{post.metadata.date}</p>
+                            <p className="text-sm text-gray-700 flex-grow">
+                                {post.content.slice(0, 120)}...
+                            </p>
+                            {post.metadata.tags && (
+                                <div className="flex flex-wrap gap-2 mt-3">
+                                    {post.metadata.tags.map((t) => (
+                                        <span
+                                            key={t}
+                                            className="text-xs bg-gray-300 px-2 py-0.5 rounded"
+                                        >
+                                            {t}
+                                        </span>
+                                    ))}
                                 </div>
                             )}
-                            <div className="p-4 flex-1 flex flex-col justify-between">
-                                <div>
-                                    <h2 className="font-bold text-xl">{post.metadata.title}</h2>
-                                    <p className="text-sm text-gray-500">{post.metadata.date}</p>
-                                    {post.metadata.tags && (
-                                        <div className="flex flex-wrap gap-2 mt-1">
-                                            {post.metadata.tags.map((t) => (
-                                                <span key={t} className="text-xs bg-gray-300  px-2 py-0.5 rounded">
-                                                    {t}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    )}
-                                    <div className="mt-2 text-gray-700  text-sm prose ">
-                                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                                            {post.preview + "..."}
-                                        </ReactMarkdown>
-                                    </div>
-                                </div>
-                            </div>
-                        </Link>
-                    ))}
-                </div>
-            )}
-
-            {/* Pagination */}
-            {!loading && (
-                <div className="flex items-center justify-between mt-6">
-                    <label className="flex items-center gap-2">
-                        Posts per page:{" "}
-                        <select
-                            value={postsPerPage}
-                            onChange={(e) => {
-                                setPostsPerPage(Number(e.target.value));
-                                setCurrentPage(1);
-                            }}
-                            className="border rounded px-2 py-1 bg-white text-black "
-                        >
-                            <option value={5}>5</option>
-                            <option value={10}>10</option>
-                        </select>
-                    </label>
-
-                    <div className="flex items-center gap-2">
-                        <button
-                            onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                            disabled={currentPage === 1}
-                            className="px-3 py-1 border rounded disabled:opacity-50"
-                            aria-label="Previous page"
-                        >
-                            &#8592;
-                        </button>
-
-                        <span>
-                            {currentPage} / {totalPages}
-                        </span>
-
-                        <button
-                            onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-                            disabled={currentPage === totalPages}
-                            className="px-3 py-1 border rounded disabled:opacity-50"
-                            aria-label="Next page"
-                        >
-                            &#8594;
-                        </button>
-                    </div>
-                </div>
-            )}
+                        </div>
+                    </Link>
+                ))}
+            </div>
         </section>
     );
 }
-
-export default BlogPage;
