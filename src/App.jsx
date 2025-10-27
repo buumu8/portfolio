@@ -12,8 +12,9 @@ import ThemeToggle from "./components/ThemeToggle";
 function Navbar() {
   return (
     <nav className="flex justify-between items-center p-4 shadow-md bg-lightBg dark:bg-darkBg text-gray-800 dark:text-gray-100">
-      <Link to="/" className="text-xl font-semibold">MyPortfolio</Link>
+      <Link to="/" className="text-xl font-semibold">Portfolio</Link>
       <div className="flex items-center space-x-4">
+        <Link to="/">About me</Link>
         <Link to="/projects">Projects</Link>
         <Link to="/certifications">Certifications</Link>
         <Link to="/resume">Resume</Link>
@@ -36,7 +37,7 @@ function Footer() {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/portfolio">
       <div className="flex flex-col min-h-screen app-wrapper">
         <Navbar />
         <main className="flex-grow container mx-auto px-4 py-8">

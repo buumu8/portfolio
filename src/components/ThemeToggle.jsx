@@ -18,12 +18,14 @@ export default function ThemeToggle() {
 
     return (
         <button
-            onClick={() =>
+            onClick={() => {
                 setTheme(theme === "light" ? "dark" : "light")
+                console.log(theme)
+            }
             }
             className="p-2 rounded-md border text-sm hover:bg-gray-100 dark:hover:bg-gray-800 transition"
         >
             {theme === "light" ? "🌙 Dark" : "☀️ Light"}
-        </button>
+        </button >
     );
 }
