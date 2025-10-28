@@ -57,7 +57,7 @@ export default function Blog() {
 
     return (
         <section className="max-w-6xl mx-auto px-4 py-16 mt-5">
-            <h1 className="text-3xl font-bold mb-6">Blog</h1>
+            <h1 className="text-3xl font-bold mb-6">Blogs</h1>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {posts.map((post) => (
