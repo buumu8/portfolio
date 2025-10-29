@@ -28,3 +28,35 @@
 .animate-fade-in {
   animation: fadeIn 0.4s ease forwards;
 }
+
+/* Auto scroll featured badges */
+
+.badge-container {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.badge-container:hover {
+  animation-play-state: paused;
+  /* Pause on hover */
+}
+
+.badge {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.badge-container {
+  animation: scroll 20s linear infinite;
+}

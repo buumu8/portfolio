@@ -8,7 +8,7 @@ function ResumePage() {
 
     return (
         <section className="max-w-6xl mx-auto px-4 py-16 mt-5">
-            <h1 className="text-2xl font-bold mb-4">My Resume</h1>
+            <h1 className="text-3xl font-bold mb-4">Resume</h1>
             <div className="w-full h-[80vh] border shadow-md flex items-center justify-center">
                 {error ? (
                     <div className="text-center">
