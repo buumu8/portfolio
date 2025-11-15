@@ -1,7 +1,7 @@
 ---
-title: "My First Post"
+title: "Interning in Japan"
 date: "2025-10-27"
-tags: ["React", "Portfolio"]
+tags: ["Personal"]
 image: "${import.meta.env.BASE_URL}images/first-post.jpg"
 ---
 

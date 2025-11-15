@@ -410,14 +410,21 @@ export const badges = [
         image: `${import.meta.env.BASE_URL}/badges/60486f42-c423-41e4-b252-7de2b7c7970f.png`,
         url: "https://credentials.engineering.nyu.edu/ea869cf3-7afa-4ac0-a0d1-0ad9ffa222f8#acc.xl7gbouS",
         issuer: "NYU",
-        categories: ["CyberSecurity", "NYU"],
+        categories: ["CyberSecurity", "NYU", "CTF"],
         priority: true,
     }, {
         name: "Cyber Million with Immersive Badge",
         image: `${import.meta.env.BASE_URL}/badges/43060e3e-9766-4fb5-bdb9-0ec8d3c3683c.png`,
         url: "https://credentials.engineering.nyu.edu/d712d450-f3ee-4ef7-98c4-f0af4707038a#acc.ievJ3SLw",
         issuer: "NYU",
-        categories: ["CyberSecurity", "NYU"],
+        categories: ["CyberSecurity", "NYU", "CTF"],
+        priority: true,
+    }, {
+        name: "Layers of Deception - Cyber Challenge with Check Point Micro-Badge",
+        image: `${import.meta.env.BASE_URL}/badges/221fc3d8-c8d8-47df-a328-cfe6c5aa3204.png`,
+        url: "https://credentials.engineering.nyu.edu/853bb269-b127-4596-865a-5b1e86bf3e1e#acc.KxT1Zz3l",
+        issuer: "NYU",
+        categories: ["CyberSecurity", "NYU", "CTF"],
         priority: true,
     },
 ]
