@@ -1,7 +1,7 @@
-const t=`---
-title: "My First Post"
+const n=`---
+title: "Interning in Japan"
 date: "2025-10-27"
-tags: ["React", "Portfolio"]
+tags: ["Personal"]
 image: "\${import.meta.env.BASE_URL}images/first-post.jpg"
 ---
 
@@ -20,4 +20,4 @@ Test
 Test
 Test
 
-`;export{t as default};
+`;export{n as default};
