@@ -1,7 +1,7 @@
 // src/pages/PostDetail.jsx
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import ReactMarkdown from "react-markdown";
+import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import fm from "front-matter";
 
@@ -10,7 +10,7 @@ export default function PostDetail() {
     const [post, setPost] = useState(null);
 
     useEffect(() => {
-        const blogFiles = import.meta.glob("../blogs/*.md", { as: "raw" });
+        const blogFiles = import.meta.glob("../blogs/*.md", { query: '?raw', import: 'default' });
         const postPath = Object.keys(blogFiles).find((path) =>
             path.includes(`${slug}.md`)
         );
@@ -52,7 +52,7 @@ export default function PostDetail() {
     return (
         <section className="max-w-5xl mx-auto px-4 py-16 mt-5">
             <Link to="/blog" className="text-blue-500 hover:underline">
-                &larr; Back to Blog
+                &larr; Back to Blogs
             </Link>
 
             <h1 className="text-3xl font-bold">{post.metadata.title}</h1>
@@ -69,7 +69,7 @@ export default function PostDetail() {
                     ))}
                 </div>
             )}
-            {post.metadata.image && (
+            {/* {post.metadata.image && (
                 <div className="w-full h-80 overflow-hidden mt-4">
                     <img
                         src={post.metadata.image}
@@ -77,13 +77,28 @@ export default function PostDetail() {
                         className="w-full h-full object-cover rounded-md"
                     />
                 </div>
-            )}
+            )} */}
 
             <div className="prose mt-4">
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                <Markdown remarkPlugins={[remarkGfm]} components={{
+                    img: ({ src, alt }) => {
+                        const base = import.meta.env.BASE_URL + '/' || "/";
+                        const finalSrc = src.startsWith("http")
+                            ? src
+                            : `${base}${src.replace(/^\//, "")}`;
+
+                        return (
+                            <img
+                                src={finalSrc}
+                                alt={alt}
+                                className="your-image-class"
+                            />
+                        );
+                    }
+                }}>
                     {post.content}
-                </ReactMarkdown>
+                </Markdown>
             </div>
-        </section>
+        </section >
     );
 }

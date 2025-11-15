@@ -1,6 +1,7 @@
 import { badges } from "../data/badges";
 import FeaturedBadges from "../components/FeatureBadges";
 import AutoScrollBadges from "../components/AutoScrollBadges";
+import { Link } from "react-router-dom";
 
 export default function Home() {
 
@@ -21,19 +22,15 @@ export default function Home() {
                     Cybersecurity. Machine Learning. Web Developing. Real-world defense.
                 </p>
                 <div className="flex space-x-4">
-                    <a
+                    {/* <a
                         href={`${import.meta.env.BASE_URL}/resume.pdf`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-5 py-2 border border-primary text-primary rounded-md hover:bg-blue-50 transition">
                         View Resume
-                    </a>
-                    <a
-                        href={`${import.meta.env.BASE_URL}/projects`}
-                        className="px-5 py-2 border border-primary text-primary rounded-md hover:bg-blue-50 transition"
-                    >
-                        View Projects
-                    </a>
+                    </a> */}
+                    <Link to="/certifications" className="px-5 py-2 border border-primary text-primary rounded-md hover:bg-blue-50 transition">Certifications & Badges</Link>
+                    <Link to="/projects" className="px-5 py-2 border border-primary text-primary rounded-md hover:bg-blue-50 transition">Projects</Link>
                 </div>
                 <a className="m-4" href="https://tryhackme.com/p/Jettapol"><img src={`${import.meta.env.BASE_URL}/badges/tryhackme.png`} alt="Tryhackme Profile" /></a>
 

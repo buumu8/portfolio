@@ -60,3 +60,103 @@
 .badge-container {
   animation: scroll 20s linear infinite;
 }
+
+/* For markdown to work*/
+.prose :where(h1):not(:where([class~="not-prose"] *)) {
+  font-size: 2.25rem !important;
+  font-weight: 700;
+}
+
+.prose :where(h2):not(:where([class~="not-prose"] *)) {
+  font-size: 1.75rem !important;
+  font-weight: 600;
+}
+
+/* Paragraphs */
+/* Use for overall newspaper feel */
+.prose {
+  margin-top: 100px;
+  font-family: "Georgia", serif;
+  /* max-width: 65ch; */
+  /* narrower column for readability */
+  line-height: 1.75;
+  justify-content: center;
+}
+
+/* Drop cap for the FIRST paragraph */
+.prose>p:first-of-type::first-letter {
+  float: left;
+  font-size: 4.2rem;
+  line-height: 0.9;
+  padding-right: 0.25rem;
+  padding-left: 0.05rem;
+  font-weight: 700;
+  color: #111;
+  /* dark ink look */
+  margin-top: 0.1rem;
+}
+
+/* Indent all paragraphs except the first */
+.prose>p {
+  text-indent: 1.75rem;
+  margin-top: 1.1rem;
+}
+
+.prose>p:first-of-type {
+  text-indent: 0;
+  /* no indent on first paragraph */
+}
+
+/* Optional: lighten paragraphs slightly for a print feel */
+.prose p {
+  color: #222;
+}
+
+
+/* Target the first image inside the prose block */
+.prose>p:first-of-type img,
+.prose>img:first-of-type {
+  float: left;
+  width: 40%;
+  max-width: 280px;
+  margin: 0.25rem 1rem 0.5rem 0;
+  border-radius: 6px;
+}
+
+/* Make the paragraph wrap normally */
+.prose>p:first-of-type {
+  text-indent: 0;
+}
+
+/* Keep drop cap if you use it */
+.prose>p:first-of-type::first-letter {
+  float: left;
+  font-size: 4rem;
+  line-height: 0.9;
+  padding-right: 0.3rem;
+  font-weight: bold;
+}
+
+/* Blockquote */
+.prose blockquote {
+  border-left: 4px solid #3b82f6;
+  padding-left: 1rem;
+  color: #374151;
+  font-style: italic;
+}
+
+/* Inline code */
+.prose code {
+  background: #f3f4f6;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+/* Code blocks */
+.prose pre {
+  background: #1e1e1e;
+  color: #e5e7eb;
+  padding: 1rem;
+  border-radius: 6px;
+}
