@@ -22,13 +22,13 @@ export default function Home() {
                     Cybersecurity. Machine Learning. Web Developing. Real-world defense.
                 </p>
                 <div className="flex space-x-4">
-                    {/* <a
-                        href={`${import.meta.env.BASE_URL}/resume.pdf`}
+                    <a
+                        href={`https://drive.google.com/file/d/1cMJTt3jTNwAd9431sZOl2txXTwl-ti0L/view?usp=drive_link`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-5 py-2 border border-primary text-primary rounded-md hover:bg-blue-50 transition">
-                        View Resume
-                    </a> */}
+                        Resume
+                    </a>
                     <Link to="/certifications" className="px-5 py-2 border border-primary text-primary rounded-md hover:bg-blue-50 transition">Certifications & Badges</Link>
                     <Link to="/projects" className="px-5 py-2 border border-primary text-primary rounded-md hover:bg-blue-50 transition">Projects</Link>
                 </div>

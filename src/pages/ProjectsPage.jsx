@@ -31,6 +31,7 @@ function ProjectsPage() {
                     "Developed a mobile app to detect and simulate BLE security threats, enhancing understanding of wireless vulnerabilities and mobile security risks.",
                 image: "",
                 tags: ["Mobile", "Security", "IoT"],
+                href: "https://drive.google.com/file/d/1fRjHXfK1QvAmVBC-qhk_wdLP9rvGDHef/view?usp=sharing"
             },
             {
                 id: "parkinsons-classifier",
@@ -39,6 +40,7 @@ function ProjectsPage() {
                     "Built a Python-based ML model using the PPMI dataset to predict Parkinson’s disease from voice data, with a user-friendly web interface.",
                 image: "",
                 tags: ["Machine Learning", "Flask", "Python"],
+                href: "https://drive.google.com/file/d/1_CwCTa7_CaaviSeZvlRTZKlw2hsUdg--/view?usp=sharing"
             },
             {
                 id: "Network-security-labs",
@@ -47,6 +49,7 @@ function ProjectsPage() {
                     "Completed labs on packet sniffing, ARP poisoning, and network traffic analysis using Scapy and C, exploring both attack and defense mechanisms.",
                 image: `${import.meta.env.BASE_URL}/images/first-post.jpg`,
                 tags: ["Network", "Python", "C"],
+                href: "https://drive.google.com/drive/u/2/folders/13bR2erYy-2TRHHgzXLy8F0mhnm5-C44s"
             },
             {
                 id: "meta-fullstack-app",
@@ -55,6 +58,24 @@ function ProjectsPage() {
                     "Developed full-stack web apps using React, Node.js, and Express, integrating secure backend APIs and authentication as part of Meta’s Developer Professional Course.",
                 image: "",
                 tags: ["React", "Node.js", "Express"],
+                href: "https://drive.google.com/drive/u/2/folders/13bR2erYy-2TRHHgzXLy8F0mhnm5-C44s"
+            },
+            {
+                id: "pentest_purpose",
+                name: "Penetration Testing Proposal",
+                description:
+                    "A penetration testing proposal",
+                image: "",
+                tags: ["PenTest"],
+                href: "https://drive.google.com/file/d/1h10yZZBqx5pIS_VFLIaBjhqKR1h0BJa0/view?usp=sharing"
+            }, {
+                id: "pentest_report",
+                name: "Penetration Testing Report",
+                description:
+                    "A full penetration testing report",
+                image: "",
+                tags: ["PenTest"],
+                href: "https://drive.google.com/file/d/1AFEwUDzlkA8MPi00P-ZHx4Ct6mIMt9SZ/view?usp=sharing"
             },
         ];
 
@@ -91,7 +112,7 @@ function ProjectsPage() {
                 <>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {currentProjects.map((project) => (
-                            <div
+                            <a href={project.href} target="_blank"><div
                                 key={project.id}
                                 className="border rounded-md shadow-sm hover:shadow-md transition bg-gray-50 overflow-hidden flex flex-col"
                             >
@@ -126,7 +147,7 @@ function ProjectsPage() {
                                         ))}
                                     </div>
                                 </div>
-                            </div>
+                            </div></a>
                         ))}
                     </div>
 
