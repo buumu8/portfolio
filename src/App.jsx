@@ -16,6 +16,7 @@ const Loader = () => (
 const Home = lazy(() => import("./pages/Home"));
 const Projects = lazy(() => import("./pages/ProjectsPage"));
 const Certifications = lazy(() => import("./pages/Certifications"));
+const Academics = lazy(() => import("./pages/Academics"));
 import ResumePage from "./pages/Resume";
 import Blog from "./pages/Blog";
 const PostDetail = lazy(() => import("./pages/PostDetail"));
@@ -23,9 +24,7 @@ const Contact = lazy(() => import("./pages/Contact"));
 
 function Footer() {
   return (
-    <footer className="text-center py-4 border-t text-sm text-gray-500">
-      © {new Date().getFullYear()} Jettapol Tuetrakul. All rights reserved.
-    </footer>
+    <footer className="text-center py-4 border-t text-sm text-gray-500">© {new Date().getFullYear()} Jettapol Tuetrakul. All rights reserved.</footer>
   );
 }
 
@@ -38,13 +37,70 @@ function App() {
         <main className="grow container mx-auto px-4 py-8">
           <Suspense fallback={<Loader />}>
             <Routes>
-              <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
-              <Route path="/projects" element={<PageWrapper><Projects /></PageWrapper>} />
-              <Route path="/certifications" element={<PageWrapper><Certifications /></PageWrapper>} />
-              <Route path="/resume" element={<PageWrapper><ResumePage /></PageWrapper>} />
-              <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
-              <Route path="/blog/:slug" element={<PageWrapper><PostDetail /></PageWrapper>} />
-              <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+              <Route
+                path="/"
+                element={
+                  <PageWrapper>
+                    <Home />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/projects"
+                element={
+                  <PageWrapper>
+                    <Projects />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/academics"
+                element={
+                  <PageWrapper>
+                    <Academics />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/certifications"
+                element={
+                  <PageWrapper>
+                    <Certifications />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/resume"
+                element={
+                  <PageWrapper>
+                    <ResumePage />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/blog"
+                element={
+                  <PageWrapper>
+                    <Blog />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/blog/:slug"
+                element={
+                  <PageWrapper>
+                    <PostDetail />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/contact"
+                element={
+                  <PageWrapper>
+                    <Contact />
+                  </PageWrapper>
+                }
+              />
               <Route path="*" element={<NotFoundPage />} /> {/* Catch-all */}
             </Routes>
           </Suspense>
