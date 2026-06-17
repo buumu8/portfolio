@@ -495,5 +495,29 @@ export const badges = [
     categories: ["CyberSecurity", "Cisco", "EthicalHacking"],
     priority: true,
   },
+  {
+    name: "Japanese Language Proficiency Test (JLPT) Level N1",
+    image: `${import.meta.env.BASE_URL}/badges/JLPT-logo.jpg`,
+    url: "https://drive.google.com/file/d/1Zv5MiGYqc_HPxEPRmN-daKtzcvzdO7TK/view?usp=drive_link",
+    issuer: "JLPT",
+    categories: ["Language"],
+    priority: true,
+  },
+  {
+    name: "Chinese Proficiency Test (HSK) Level 6",
+    image: `${import.meta.env.BASE_URL}/badges/HSK-logo.jpg`,
+    url: "https://drive.google.com/file/d/1LVo-vcgGwLkdfJ_jFiJQdW-x1qqMjkIM/view?usp=drive_link",
+    issuer: "HSK",
+    categories: ["Language"],
+    priority: true,
+  },
+  {
+    name: "Test of Proficiency in Korean (TOPIK) Level 5",
+    image: `${import.meta.env.BASE_URL}/badges/TOPIK-logo.jpg`,
+    url: "https://drive.google.com/file/d/1krNwl_qM8v-TElguaha7YhF_Ji3Fmvek/view?usp=drive_link",
+    issuer: "TOPIK",
+    categories: ["Language"],
+    priority: true,
+  },
 ];
 // ...more badges
