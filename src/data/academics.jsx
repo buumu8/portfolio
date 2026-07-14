@@ -99,7 +99,7 @@ export const academicHistory = [
       {
         code: "CS 7632",
         name: "Game Artificial Intelligence",
-        grade: "N/A",
+        grade: "-",
         semester: "Summer 2026",
         description: "Hands-on course covering game artificial intelligence principles, including pathfinding, decision making, and behavior trees.",
       },

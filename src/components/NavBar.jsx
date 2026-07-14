@@ -36,9 +36,9 @@ function Navbar() {
           <Link to="/" className="py-2 md:py-0 md:mx-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>
             About me
           </Link>
-          <Link to="/projects" className="py-2 md:py-0 md:mx-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>
+          {/* <Link to="/projects" className="py-2 md:py-0 md:mx-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>
             Projects
-          </Link>
+          </Link> */}
           <Link to="/academics" className="py-2 md:py-0 md:mx-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>
             Academics
           </Link>
