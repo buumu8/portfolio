@@ -78,6 +78,35 @@ export const academicHistory = [
   },
   {
     id: 2,
+    degree: "Computer Science, M.S.",
+    institution: "Georgia Institute of Technology (Georgia Tech) - College of Computing",
+    startYear: 2026,
+    endYear: 2030,
+    gpa: "4.00",
+    honors: "Current Student",
+
+    categories: ["Master"],
+
+    coursework: [
+      {
+        code: "CS 7646",
+        name: "Machine Learning for Trading",
+        grade: "A",
+        semester: "Spring 2026",
+        description:
+          "Hands-on course covering machine learning techniques and their applications in financial trading. Includes topics such as algorithmic trading, portfolio optimization, and risk management.",
+      },
+      {
+        code: "CS 7632",
+        name: "Game Artificial Intelligence",
+        grade: "N/A",
+        semester: "Summer 2026",
+        description: "Hands-on course covering game artificial intelligence principles, including pathfinding, decision making, and behavior trees.",
+      },
+    ],
+  },
+  {
+    id: 3,
     degree: "Computer Engineering, B.S.",
     institution: "Chulalongkorn University",
     honors: "Grauated",
