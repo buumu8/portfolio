@@ -74,7 +74,7 @@ export default function Academics() {
                     onClick={() => setExpanded(expanded === degree.id ? null : degree.id)}
                     className="mt-5 px-4 py-2 bg-blue-600 text-white rounded"
                   >
-                    {expanded === degree.id ? "Hide Coursework" : "View Coursework"}
+                    {expanded === degree.id ? "Hide Courseworks" : "View Courseworks"}
                   </button>
                 )}
               </div>
@@ -82,7 +82,7 @@ export default function Academics() {
               {/* Coursework */}
               {expanded === degree.id && (
                 <div className="border-t bg-gray-50 p-6">
-                  <h3 className="font-semibold mb-4">Coursework</h3>
+                  <h3 className="font-semibold mb-4">Courseworks</h3>
 
                   <div className="overflow-x-auto">
                     <table className="w-full text-sm">

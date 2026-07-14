@@ -46,9 +46,9 @@ function Navbar() {
             Certifications & Badges
           </Link>
           {/* <Link to="/resume" className="py-2 md:py-0 md:mx-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>Resume</Link> */}
-          <Link to="/blog" className="py-2 md:py-0 md:mx-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>
+          {/* <Link to="/blog" className="py-2 md:py-0 md:mx-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>
             Blogs
-          </Link>
+          </Link> */}
           <Link to="/contact" className="py-2 md:py-0 md:mx-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>
             Contact
           </Link>
