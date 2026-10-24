@@ -9,7 +9,8 @@ export const academicHistory = [
     honors: "Current Student",
 
     categories: ["Master"],
-
+    transcriptLink: "https://drive.google.com/file/d/12rRz8W0X0FpGg3vCQnzvNCOZ2TKNl1Lk/view?usp=sharing",
+    certificateLink: "",
     coursework: [
       {
         code: "CS-GY 6813",
@@ -74,6 +75,24 @@ export const academicHistory = [
         description:
           "In-depth study of digital forensics principles and practices. Including hands-on labs using tools like TK.  Final project involves conducting a digital forensic investigation on a simulated cybercrime scenario and presenting findings in a comprehensive report.",
       },
+
+      {
+        code: "CS-GY 6903",
+        name: "Applied Cryptography",
+        grade: "-",
+        semester: "Fall 2026",
+        description:
+          "In-depth study of applied cryptography principles and practices. Including projects on implementing cryptographic algorithms and protocols, as well as analyzing their security properties.  ",
+      },
+
+      {
+        code: "ECE 6913",
+        name: "Computing Systems Architecture",
+        grade: "-",
+        semester: "Fall 2026",
+        description:
+          "In-depth study of computing systems architecture principles and practices using RISC-V architecture. Including projects on designing and analyzing computer system architectures, as well as evaluating their performance and security properties.  ",
+      },
     ],
   },
   {
@@ -83,9 +102,11 @@ export const academicHistory = [
     startYear: 2026,
     endYear: 2030,
     gpa: "4.00",
-    honors: "Current Student",
+    honors: "Current Part-Time Student",
 
     categories: ["Master"],
+    transcriptLink: "https://drive.google.com/file/d/1WAqCPipSE0EJNkTWJlXjptXu4X8xS6rp/view?usp=sharing",
+    certificateLink: "",
 
     coursework: [
       {
@@ -99,7 +120,7 @@ export const academicHistory = [
       {
         code: "CS 7632",
         name: "Game Artificial Intelligence",
-        grade: "-",
+        grade: "A",
         semester: "Summer 2026",
         description: "Hands-on course covering game artificial intelligence principles, including pathfinding, decision making, and behavior trees.",
       },
@@ -109,8 +130,11 @@ export const academicHistory = [
     id: 3,
     degree: "Computer Engineering, B.S.",
     institution: "Chulalongkorn University",
-    honors: "Grauated",
+    honors: "Graduated",
+    gpa: "3.05",
 
     categories: ["Bachelor"],
+    transcriptLink: "https://drive.google.com/file/d/1ccX3dWEhZCK6O0c2ybjeXJ_pzaLiFtMR/view?usp=sharing",
+    certificateLink: "https://drive.google.com/file/d/1E1BypylxleMOMETejdZKRPcXlwojItRX/view?usp=sharing",
   },
 ];

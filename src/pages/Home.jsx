@@ -32,6 +32,14 @@ export default function Home() {
           <Link to="/academics" className="px-5 py-2 border border-primary text-primary rounded-md hover:bg-blue-50 transition">
             Academics
           </Link>
+          <a
+            href={`https://medium.com/@buumu8`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-5 py-2 border border-primary text-primary rounded-md hover:bg-blue-50 transition"
+          >
+            Blog
+          </a>
         </div>
         <a className="m-4" href="https://tryhackme.com/p/Jettapol">
           <img src={`${import.meta.env.BASE_URL}/badges/tryhackme.png`} alt="Tryhackme Profile" />

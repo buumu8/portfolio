@@ -72,9 +72,23 @@ export default function Academics() {
                 {degree.coursework && (
                   <button
                     onClick={() => setExpanded(expanded === degree.id ? null : degree.id)}
-                    className="mt-5 px-4 py-2 bg-blue-600 text-white rounded"
+                    className="mt-5 mr-5 px-4 py-2 bg-blue-600 text-white rounded"
                   >
                     {expanded === degree.id ? "Hide Courseworks" : "View Courseworks"}
+                  </button>
+                )}
+                {degree.transcriptLink && (
+                  <button className="mt-5 px-4 py-2 bg-blue-600 text-white rounded">
+                    <a href={degree.transcriptLink} target="_blank" rel="noopener noreferrer">
+                      View Academic Transcript
+                    </a>
+                  </button>
+                )}
+                {degree.certificateLink && (
+                  <button className="ml-5 mt-5 px-4 py-2 bg-blue-600 text-white rounded">
+                    <a href={degree.certificateLink} target="_blank" rel="noopener noreferrer">
+                      View Certificate
+                    </a>
                   </button>
                 )}
               </div>

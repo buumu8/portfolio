@@ -49,6 +49,9 @@ function Navbar() {
           {/* <Link to="/blog" className="py-2 md:py-0 md:mx-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>
             Blogs
           </Link> */}
+          <a href="https://medium.com/@buumu8" className="py-2 md:py-0 md:mx-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>
+            Blog
+          </a>
           <Link to="/contact" className="py-2 md:py-0 md:mx-2 hover:text-gray-300" onClick={() => setIsOpen(false)}>
             Contact
           </Link>
