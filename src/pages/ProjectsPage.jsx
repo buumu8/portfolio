@@ -30,6 +30,42 @@ function ProjectsPage() {
         tags: ["Game AI", "AI", "Fuzzy Logic"],
         href: "https://youtu.be/GJXkzKv-CUk",
       },
+      {
+        id: "tailwind_css_flyo_website",
+        name: "Tailwind CSS Flyo Website",
+        description:
+          "Built a responsive website for a fictional travel company using Tailwind CSS, showcasing modern web design principles and utility-first styling.",
+        image: `${import.meta.env.BASE_URL}/images/flyo-website.png`,
+        tags: ["Web Development", "Tailwind CSS", "Responsive Design"],
+        href: "https://buumu8.github.io/tailwind-flyo/",
+      },
+      {
+        id: "tailwind_css_loopstudio_website",
+        name: "Tailwind CSS LoopStudio Website",
+        description:
+          "Built a responsive website for a fictional music production company using Tailwind CSS, showcasing modern web design principles and utility-first styling.",
+        image: `${import.meta.env.BASE_URL}/images/loopstudio-website.png`,
+        tags: ["Web Development", "Tailwind CSS", "Responsive Design"],
+        href: "https://buumu8.github.io/tailwind-loopstudio/",
+      },
+      {
+        id: "tailwind_css_bookmark_website",
+        name: "Tailwind CSS Bookmark Website",
+        description:
+          "Built a responsive website for a fictional bookmarking app using Tailwind CSS, showcasing modern web design principles and utility-first styling.",
+        image: `${import.meta.env.BASE_URL}/images/bookmark-website.png`,
+        tags: ["Web Development", "Tailwind CSS", "Responsive Design"],
+        href: "https://buumu8.github.io/tailwind-bookmark/",
+      },
+      // {
+      //   id: "nextjs_amazona_website",
+      //   name: "Next.js Amazona Website",
+      //   description:
+      //     "Built a responsive e-commerce website for a fictional online store using Next.js and Tailwind CSS, showcasing modern web development practices and seamless user experience.",
+      //   image: `${import.meta.env.BASE_URL}/images/amazona-website.png`,
+      //   tags: ["Web Development", "Next.js", "Tailwind CSS", "E-commerce"],
+      //   href: "https://next-tailwind-amazona-8siwsoj3n-buumu8.vercel.app",
+      // },
       // {
       //     id: "ble-threat-detector",
       //     name: "Real-Time BLE Threat Detection App",
@@ -116,7 +152,7 @@ function ProjectsPage() {
         <>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {currentProjects.map((project) => (
-              <a href={project.href} target="_blank">
+              <a href={project.href} target="_blank" className="flex-auto">
                 <div key={project.id} className="border rounded-md shadow-sm hover:shadow-md transition bg-gray-50 overflow-hidden flex flex-col">
                   {/* Project Image */}
                   {project.image && (
