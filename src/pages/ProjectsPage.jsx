@@ -57,6 +57,24 @@ function ProjectsPage() {
         tags: ["Web Development", "Tailwind CSS", "Responsive Design"],
         href: "https://buumu8.github.io/tailwind-bookmark/",
       },
+      {
+        id: "tailwind_css_clipboard_website",
+        name: "Tailwind CSS Clipboard Website",
+        description:
+          "Built a responsive website for a fictional clipboard app using Tailwind CSS, showcasing modern web design principles and utility-first styling.",
+        image: `${import.meta.env.BASE_URL}/images/clipboard-website.png`,
+        tags: ["Web Development", "Tailwind CSS", "Responsive Design"],
+        href: "https://buumu8.github.io/tailwind-clipboard-landing-page/",
+      },
+      {
+        id: "tailwind_css_shortly_website",
+        name: "Tailwind CSS Shortly Website",
+        description:
+          "Built a responsive website for a fictional URL shortening app using Tailwind CSS, showcasing modern web design principles and utility-first styling.",
+        image: `${import.meta.env.BASE_URL}/images/shortly-website.png`,
+        tags: ["Web Development", "Tailwind CSS", "Responsive Design"],
+        href: "https://buumu8.github.io/tailwind-shortly/",
+      },
       // {
       //   id: "nextjs_amazona_website",
       //   name: "Next.js Amazona Website",
