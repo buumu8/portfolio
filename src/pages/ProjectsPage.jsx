@@ -22,6 +22,15 @@ function ProjectsPage() {
 
     const projectData = [
       {
+        id: "ibm_clearbid_ai_agent",
+        name: "ClearBid: AI asisted procurement",
+        description:
+          "Implemented an AI assisted procurement system for IBM SkillsBuild AI Experiential Learning Hackathon. Building AI service using IBM Bob and IBM watsonx Orchestrate",
+        image: `${import.meta.env.BASE_URL}/images/clearbid.png`,
+        tags: ["Game AI", "AI", "Fuzzy Logic"],
+        href: "https://github.com/buumu8/clearbid",
+      },
+      {
         id: "game_ai_fuzzy_race_track",
         name: "Game AI Fuzzy Race Track",
         description:
