@@ -27,8 +27,17 @@ function ProjectsPage() {
         description:
           "Implemented an AI assisted procurement system for IBM SkillsBuild AI Experiential Learning Hackathon. Building AI service using IBM Bob and IBM watsonx Orchestrate",
         image: `${import.meta.env.BASE_URL}/images/clearbid.png`,
-        tags: ["Game AI", "AI", "Fuzzy Logic"],
+        tags: ["IBM", "AI", "agentic AI", "ReactJS", "NodeJS"],
         href: "https://github.com/buumu8/clearbid",
+      },
+      {
+        id: "pentest_reports",
+        name: "Penetration Test Report",
+        description:
+          "Hands-on penetration test labs proposal and full test reports for a fictional security company.",
+        image: `${import.meta.env.BASE_URL}/images/pentest.png`,
+        tags: ["PenTest", "Cybersecurity"],
+        href: "https://drive.google.com/drive/folders/1r-wr-Ic1SdnFZ3gohXdLfLjY89IfukOH?usp=drive_link",
       },
       {
         id: "game_ai_fuzzy_race_track",
